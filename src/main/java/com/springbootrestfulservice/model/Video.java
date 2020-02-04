@@ -5,6 +5,8 @@
  */
 package com.springbootrestfulservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -33,6 +35,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Video.findByVisualizaciones", query = "SELECT v FROM Video v WHERE v.visualizaciones = :visualizaciones")
     , @NamedQuery(name = "Video.findByLikes", query = "SELECT v FROM Video v WHERE v.likes = :likes")
     , @NamedQuery(name = "Video.findByDislikes", query = "SELECT v FROM Video v WHERE v.dislikes = :dislikes")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Video implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -146,5 +151,5 @@ public class Video implements Serializable {
     public String toString() {
         return "com.springbootrestfulservice.model.Video[ id=" + id + " ]";
     }
-    
+
 }

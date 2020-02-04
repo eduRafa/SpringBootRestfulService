@@ -5,6 +5,8 @@
  */
 package com.springbootrestfulservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -19,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,7 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
     , @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id")
     , @NamedQuery(name = "Empresa.findByNombre", query = "SELECT e FROM Empresa e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "Empresa.findByDirecci\u00f3n", query = "SELECT e FROM Empresa e WHERE e.direcci\u00f3n = :direcci\u00f3n")})
+    , @NamedQuery(name = "Empresa.findByDireccion", query = "SELECT e FROM Empresa e WHERE e.direccion = :direccion")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,14 +50,16 @@ public class Empresa implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 30)
     @Column(name = "nombre")
-    private int nombre;
+    private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "direcci\u00f3n")
-    private int dirección;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
-    private Set<EmpresaYoutuber> empresaYoutuberSet;
+    @Size(min = 1, max = 30)
+    @Column(name = "direccion")
+    private String direccion;
+
+    ;
 
     public Empresa() {
     }
@@ -60,10 +68,10 @@ public class Empresa implements Serializable {
         this.id = id;
     }
 
-    public Empresa(Integer id, int nombre, int dirección) {
+    public Empresa(Integer id, String nombre, String direccion) {
         this.id = id;
         this.nombre = nombre;
-        this.dirección = dirección;
+        this.direccion = direccion;
     }
 
     public Integer getId() {
@@ -74,29 +82,20 @@ public class Empresa implements Serializable {
         this.id = id;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public int getDirección() {
-        return dirección;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirección(int dirección) {
-        this.dirección = dirección;
-    }
-
-    @XmlTransient
-    public Set<EmpresaYoutuber> getEmpresaYoutuberSet() {
-        return empresaYoutuberSet;
-    }
-
-    public void setEmpresaYoutuberSet(Set<EmpresaYoutuber> empresaYoutuberSet) {
-        this.empresaYoutuberSet = empresaYoutuberSet;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     @Override
@@ -123,5 +122,5 @@ public class Empresa implements Serializable {
     public String toString() {
         return "com.springbootrestfulservice.model.Empresa[ id=" + id + " ]";
     }
-    
+
 }

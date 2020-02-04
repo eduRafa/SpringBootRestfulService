@@ -6,7 +6,6 @@
     <class>com.springbootrestfulservice.model.Video</class>
     <class>com.springbootrestfulservice.model.Youtuber</class>
     <class>com.springbootrestfulservice.model.Empresa</class>
-    <class>com.springbootrestfulservice.model.EmpresaYoutuber</class>
     <class>com.springbootrestfulservice.model.Categoria</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/youtube?zeroDateTimeBehavior=convertToNull"/>

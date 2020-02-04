@@ -5,6 +5,8 @@
  */
 package com.springbootrestfulservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -12,9 +14,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -38,6 +44,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Youtuber.findById", query = "SELECT y FROM Youtuber y WHERE y.id = :id")
     , @NamedQuery(name = "Youtuber.findByNombre", query = "SELECT y FROM Youtuber y WHERE y.nombre = :nombre")
     , @NamedQuery(name = "Youtuber.findByFechaAlta", query = "SELECT y FROM Youtuber y WHERE y.fechaAlta = :fechaAlta")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Youtuber implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,7 +54,7 @@ public class Youtuber implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -56,29 +65,36 @@ public class Youtuber implements Serializable {
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idYoutuber")
-    private Set<EmpresaYoutuber> empresaYoutuberSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "youtuber")
-    private Set<Video> videoSet;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "empresa_youtuber",
+            joinColumns = {
+                @JoinColumn(name = "youtuber_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "empresa_id")}
+    )
+    private Set<Video> empresa;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "youtuber", fetch = FetchType.LAZY)
+    private Set<Video> videos;
 
     public Youtuber() {
     }
 
-    public Youtuber(Integer id) {
+    public Youtuber(Long id) {
         this.id = id;
     }
 
-    public Youtuber(Integer id, String nombre, Date fechaAlta) {
+    public Youtuber(Long id, String nombre, Date fechaAlta) {
         this.id = id;
         this.nombre = nombre;
         this.fechaAlta = fechaAlta;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,21 +115,12 @@ public class Youtuber implements Serializable {
     }
 
     @XmlTransient
-    public Set<EmpresaYoutuber> getEmpresaYoutuberSet() {
-        return empresaYoutuberSet;
+    public Set<Video> getVideos() {
+        return videos;
     }
 
-    public void setEmpresaYoutuberSet(Set<EmpresaYoutuber> empresaYoutuberSet) {
-        this.empresaYoutuberSet = empresaYoutuberSet;
-    }
-
-    @XmlTransient
-    public Set<Video> getVideoSet() {
-        return videoSet;
-    }
-
-    public void setVideoSet(Set<Video> videoSet) {
-        this.videoSet = videoSet;
+    public void setVideos(Set<Video> videos) {
+        this.videos = videos;
     }
 
     @Override
@@ -140,5 +147,5 @@ public class Youtuber implements Serializable {
     public String toString() {
         return "com.springbootrestfulservice.model.Youtuber[ id=" + id + " ]";
     }
-    
+
 }
