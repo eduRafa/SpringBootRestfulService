@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -58,8 +59,8 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "direccion")
     private String direccion;
-
-    ;
+    @ManyToMany(mappedBy = "empresa")
+    private Set<Youtuber> youtuber;
 
     public Empresa() {
     }
@@ -98,6 +99,14 @@ public class Empresa implements Serializable {
         this.direccion = direccion;
     }
 
+    public Set<Youtuber> getYoutuber() {
+        return youtuber;
+    }
+
+    public void setYoutuber(Set<Youtuber> youtuber) {
+        this.youtuber = youtuber;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

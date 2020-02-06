@@ -69,11 +69,11 @@ public class Youtuber implements Serializable {
     @JoinTable(
             name = "empresa_youtuber",
             joinColumns = {
-                @JoinColumn(name = "youtuber_id")},
+                @JoinColumn(name = "id_youtuber")},
             inverseJoinColumns = {
-                @JoinColumn(name = "empresa_id")}
+                @JoinColumn(name = "id_empresa")}
     )
-    private Set<Video> empresa;
+    private Set<Empresa> empresa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "youtuber", fetch = FetchType.LAZY)
     private Set<Video> videos;
 
@@ -114,6 +114,15 @@ public class Youtuber implements Serializable {
         this.fechaAlta = fechaAlta;
     }
 
+    public Set<Empresa> getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Set<Empresa> empresa) {
+        this.empresa = empresa;
+    }
+
+    
     @XmlTransient
     public Set<Video> getVideos() {
         return videos;

@@ -56,9 +56,9 @@ public class YoutuberService {
 
             if (item.isPresent()) {
                 Youtuber newEntity = item.get();
-                //newEntity.setId(entity.getId());
-               // newEntity.setTitle(entity.getTitle());
-                //newEntity.setDescription(entity.getDescription());
+                newEntity.setNombre(entity.getNombre());
+                newEntity.setFechaAlta(entity.getFechaAlta());
+                newEntity.setVideos(entity.getVideos());
 
                 newEntity = repository.save(newEntity);
 
@@ -81,14 +81,13 @@ public class YoutuberService {
         }
     }
 
-    public List<Youtuber> getYoutubersByTitle(String title) {
-        /*List<Youtuber> itemList = repository.getByTitle(title);
+    public List<Youtuber> getYoutubersByName(String name) {
+        List<Youtuber> itemList = repository.getByTitle(name);
 
         if (itemList.size() > 0) {
             return itemList;
         } else {
             return new ArrayList<Youtuber>();
-        }*/
-        return null;
+        }
     }
 }

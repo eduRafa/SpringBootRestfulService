@@ -46,9 +46,9 @@ public class YoutuberController {
         return new ResponseEntity<Youtuber>(entity, new HttpHeaders(), HttpStatus.OK);
     }
     
-    @GetMapping("/search/{title}")
-    public ResponseEntity<List<Youtuber>> getYoutubersByTitle(@PathVariable("title") String title) {
-    	List<Youtuber> list = service.getYoutubersByTitle(title);
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Youtuber>> getYoutubersByTitle(@PathVariable("name") String name) {
+    	List<Youtuber> list = service.getYoutubersByName(name);
         return new ResponseEntity<List<Youtuber>>(list, new HttpHeaders(), HttpStatus.OK);
     }
  
