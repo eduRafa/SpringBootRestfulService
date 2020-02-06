@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Video.findAll", query = "SELECT v FROM Video v")
     , @NamedQuery(name = "Video.findById", query = "SELECT v FROM Video v WHERE v.id = :id")
-    , @NamedQuery(name = "Video.findByVisualizaciones", query = "SELECT v FROM Video v WHERE v.visualizaciones = :visualizaciones")
+    , @NamedQuery(name = "Video.findByVisualizaciones", query = "SELECT * FROM video AS v WHERE v.visualizaciones > ? ORDER BY v.visualizaciones DESC")
     , @NamedQuery(name = "Video.findByLikes", query = "SELECT v FROM Video v WHERE v.likes = :likes")
     , @NamedQuery(name = "Video.findByDislikes", query = "SELECT v FROM Video v WHERE v.dislikes = :dislikes")})
 @JsonIdentityInfo(
@@ -44,19 +44,19 @@ public class Video implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id", length = 11)
+    private Long id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "visualizaciones")
+    @Column(name = "visualizaciones", length = 11)
     private int visualizaciones;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "likes")
+    @Column(name = "likes", length = 11)
     private int likes;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "dislikes")
+    @Column(name = "dislikes", length = 11)
     private int dislikes;
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -68,22 +68,22 @@ public class Video implements Serializable {
     public Video() {
     }
 
-    public Video(Integer id) {
+    public Video(Long id) {
         this.id = id;
     }
 
-    public Video(Integer id, int visualizaciones, int likes, int dislikes) {
+    public Video(Long id, int visualizaciones, int likes, int dislikes) {
         this.id = id;
         this.visualizaciones = visualizaciones;
         this.likes = likes;
         this.dislikes = dislikes;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
