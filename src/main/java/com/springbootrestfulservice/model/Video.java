@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Video.findAll", query = "SELECT v FROM Video v")
     , @NamedQuery(name = "Video.findById", query = "SELECT v FROM Video v WHERE v.id = :id")
-    , @NamedQuery(name = "Video.findByVisualizaciones", query = "SELECT * FROM video AS v WHERE v.visualizaciones > ? ORDER BY v.visualizaciones DESC")
+    , @NamedQuery(name = "Video.findByVisualizaciones", query = "SELECT v FROM Video v WHERE v.visualizaciones = :visualizaciones")
     , @NamedQuery(name = "Video.findByLikes", query = "SELECT v FROM Video v WHERE v.likes = :likes")
     , @NamedQuery(name = "Video.findByDislikes", query = "SELECT v FROM Video v WHERE v.dislikes = :dislikes")})
 @JsonIdentityInfo(
