@@ -7,10 +7,12 @@
     <class>com.springbootrestfulservice.model.Youtuber</class>
     <class>com.springbootrestfulservice.model.Empresa</class>
     <class>com.springbootrestfulservice.model.Categoria</class>
+    <class>com.springbootrestfulservice.loginSecurity.entity.User</class>
+    <class>com.springbootrestfulservice.loginSecurity.entity.Authority</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/youtube?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
     </properties>
   </persistence-unit>

@@ -6,11 +6,14 @@
 package com.springbootrestfulservice.services;
 
 import com.springbootrestfulservice.exceptions.RecordNotFoundException;
+import com.springbootrestfulservice.model.Empresa;
 import com.springbootrestfulservice.model.Youtuber;
 import com.springbootrestfulservice.repositories.YoutuberRepository;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +39,8 @@ public class YoutuberService {
 
     public Youtuber getYoutuberById(Long id) throws RecordNotFoundException {
         Optional<Youtuber> item = repository.findById(id);
-
         if (item.isPresent()) {
+            System.out.println(item.get());
             return item.get();
         } else {
             throw new RecordNotFoundException("No item record exist for given id", id);

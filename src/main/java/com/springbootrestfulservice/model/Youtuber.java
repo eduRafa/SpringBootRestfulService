@@ -122,8 +122,6 @@ public class Youtuber implements Serializable {
         this.empresa = empresa;
     }
 
-    
-    @XmlTransient
     public Set<Video> getVideos() {
         return videos;
     }
