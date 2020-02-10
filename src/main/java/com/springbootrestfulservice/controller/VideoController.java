@@ -31,13 +31,13 @@ public class VideoController {
         return new ResponseEntity<List<Video>>(list, new HttpHeaders(), HttpStatus.OK);
     }
  
-    @GetMapping("/{id}")
+    @GetMapping(path="/{id}", produces = "application/json")
     public ResponseEntity<Video> getVideoById(@PathVariable("id") Long id)throws RecordNotFoundException {
     	Video entity = service.getVideoById(id);
         return new ResponseEntity<Video>(entity, new HttpHeaders(), HttpStatus.OK);
     }
     
-    @GetMapping("/search/{quant}")
+    @GetMapping(path="/search/{quant}", produces = "application/json")
     public ResponseEntity<List<Video>> getVideosByVisitas(@PathVariable("quant") int quant) {
     	List<Video> list = service.getVideosByVisitas(quant);
         return new ResponseEntity<List<Video>>(list, new HttpHeaders(), HttpStatus.OK);
@@ -55,7 +55,7 @@ public class VideoController {
         return new ResponseEntity<Video>(updated, new HttpHeaders(), HttpStatus.OK);
     }
  
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path="/{id}", produces = "application/json")
     public HttpStatus deleteVideoById(@PathVariable("id") Long id)throws RecordNotFoundException {
         service.deleteVideoById(id);
         return HttpStatus.ACCEPTED;
