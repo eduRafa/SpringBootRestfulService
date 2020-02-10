@@ -55,8 +55,8 @@ public class EmpresaController {
     
     @PutMapping
     public ResponseEntity<Empresa> UpdateEmpresa(@Valid @RequestBody Empresa myEmpresa)throws RecordNotFoundException {
-    	Youtuber updated = service.createYoutuber(myYoutuber);
-        return new ResponseEntity<Youtuber>(updated, new HttpHeaders(), HttpStatus.OK);
+    	Empresa updated = service.createEmpresa(myEmpresa);
+        return new ResponseEntity<Empresa>(updated, new HttpHeaders(), HttpStatus.OK);
     }
     
     
