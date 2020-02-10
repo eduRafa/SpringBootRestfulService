@@ -40,14 +40,14 @@ public class YoutuberController {
         List<Youtuber> list = service.getAllYoutubers();
         return new ResponseEntity<List<Youtuber>>(list, new HttpHeaders(), HttpStatus.OK);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Youtuber> getYoutuberById(@PathVariable("id") Long id) throws RecordNotFoundException {
-        Youtuber entity = service.getYoutuberById(id);
+ 
+    @GetMapping(path="/{id}", produces = "application/json")
+    public ResponseEntity<Youtuber> getYoutuberById(@PathVariable("id") Long id)throws RecordNotFoundException {
+    	Youtuber entity = service.getYoutuberById(id);
         return new ResponseEntity<Youtuber>(entity, new HttpHeaders(), HttpStatus.OK);
     }
-
-    @GetMapping("/search/{name}")
+    
+    @GetMapping(path="/search/{name}", produces = "application/json")
     public ResponseEntity<List<Youtuber>> getYoutubersByTitle(@PathVariable("name") String name) {
         List<Youtuber> list = service.getYoutubersByName(name);
         return new ResponseEntity<List<Youtuber>>(list, new HttpHeaders(), HttpStatus.OK);
@@ -64,9 +64,9 @@ public class YoutuberController {
         Youtuber updated = service.createYoutuber(myYoutuber);
         return new ResponseEntity<Youtuber>(updated, new HttpHeaders(), HttpStatus.OK);
     }
-
-    @DeleteMapping("/{id}")
-    public HttpStatus deleteYoutuberById(@PathVariable("id") Long id) throws RecordNotFoundException {
+ 
+    @DeleteMapping(path="/{id}", produces = "application/json")
+    public HttpStatus deleteYoutuberById(@PathVariable("id") Long id)throws RecordNotFoundException {
         service.deleteYoutuberById(id);
         return HttpStatus.ACCEPTED;
     }
