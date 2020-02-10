@@ -38,7 +38,7 @@ public class VideoController {
     }
     
     @GetMapping("/search/{quant}")
-    public ResponseEntity<List<Video>> getVideosByTitle(@PathVariable("quant") int quant) {
+    public ResponseEntity<List<Video>> getVideosByVisitas(@PathVariable("quant") int quant) {
     	List<Video> list = service.getVideosByVisitas(quant);
         return new ResponseEntity<List<Video>>(list, new HttpHeaders(), HttpStatus.OK);
     }
