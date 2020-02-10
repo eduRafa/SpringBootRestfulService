@@ -2,13 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.springbootrestfulservice_SpringBootRestfulService_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.springbootrestfulservice.model.Categoría</class>
+    <class>com.springbootrestfulservice.model.Categoria</class>
     <class>com.springbootrestfulservice.model.Video</class>
     <class>com.springbootrestfulservice.model.Youtuber</class>
     <class>com.springbootrestfulservice.model.Empresa</class>
-    <class>com.springbootrestfulservice.model.Categoria</class>
-    <class>com.springbootrestfulservice.loginSecurity.entity.User</class>
-    <class>com.springbootrestfulservice.loginSecurity.entity.Authority</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/youtube?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
