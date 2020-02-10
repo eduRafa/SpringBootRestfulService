@@ -31,7 +31,7 @@ public class EmpresaService {
         }
     }
      
-    public Empresa getItemById(Long id) throws RecordNotFoundException {
+    public Empresa getEmpresaById(Long id) throws RecordNotFoundException {
         Optional<Empresa> empresa = repository.findById(id);
          
         if(empresa.isPresent()) {
@@ -67,7 +67,7 @@ public class EmpresaService {
     	}	    
     }
      
-    public void deleteItemById(Long id) throws RecordNotFoundException {
+    public void deleteEmpresaById(Long id) throws RecordNotFoundException {
         Optional<Empresa> empresa = repository.findById(id);
          
         if(empresa.isPresent()) {
@@ -77,7 +77,7 @@ public class EmpresaService {
         }
     }
 
-    public List<Empresa> getItemsByNombre(String nombre) {
+    public List<Empresa> getEmpresasByNombre(String nombre) {
         List<Empresa> empresaList = repository.getByNombre(nombre);
          
         if(empresaList.size() > 0) {
