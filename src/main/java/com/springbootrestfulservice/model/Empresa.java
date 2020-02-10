@@ -48,7 +48,7 @@ public class Empresa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -65,21 +65,21 @@ public class Empresa implements Serializable {
     public Empresa() {
     }
 
-    public Empresa(Integer id) {
+    public Empresa(Long id) {
         this.id = id;
     }
 
-    public Empresa(Integer id, String nombre, String direccion) {
+    public Empresa(Long id, String nombre, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
