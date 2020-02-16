@@ -59,7 +59,7 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "direccion")
     private String direccion;
-    @ManyToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "empresa")
     private Set<Youtuber> youtuber;
 
     public Empresa() {

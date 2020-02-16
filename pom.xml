@@ -73,7 +73,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.carlosserrano.apirestfulservice.AppMain</mainClass>
+                            <mainClass>com.springbookrestfulservice.AppMain</mainClass>
                         </manifest>                      
                     </archive>
                 </configuration>

@@ -65,7 +65,7 @@ public class Youtuber implements Serializable {
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(
             name = "empresa_youtuber",
             joinColumns = {
@@ -74,7 +74,7 @@ public class Youtuber implements Serializable {
                 @JoinColumn(name = "id_empresa")}
     )
     private Set<Empresa> empresa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "youtuber", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "youtuber")
     private Set<Video> videos;
 
     public Youtuber() {

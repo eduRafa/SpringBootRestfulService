@@ -53,7 +53,7 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "categoria")
     private Set<Video> videoSet;
 
     public Categoria() {
