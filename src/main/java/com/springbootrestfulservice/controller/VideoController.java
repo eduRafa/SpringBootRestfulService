@@ -51,7 +51,7 @@ public class VideoController {
     
     @PutMapping
     public ResponseEntity<Video> UpdateVideo(@Valid @RequestBody Video myVideo)throws RecordNotFoundException {
-    	Video updated = service.createVideo(myVideo);
+    	Video updated = service.UpdateVideo(myVideo);
         return new ResponseEntity<Video>(updated, new HttpHeaders(), HttpStatus.OK);
     }
  

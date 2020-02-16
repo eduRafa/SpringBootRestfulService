@@ -55,7 +55,7 @@ public class EmpresaService {
                 Empresa newEntity = empresa.get();
                 newEntity.setNombre(entity.getNombre());
                 newEntity.setDireccion(entity.getDireccion());
-
+                newEntity.setYoutuber(entity.getYoutuber());
                 newEntity = repository.save(newEntity);
 
                 return newEntity;

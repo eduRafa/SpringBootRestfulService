@@ -55,7 +55,7 @@ public class EmpresaController {
     
     @PutMapping
     public ResponseEntity<Empresa> UpdateEmpresa(@Valid @RequestBody Empresa myEmpresa)throws RecordNotFoundException {
-    	Empresa updated = service.createEmpresa(myEmpresa);
+    	Empresa updated = service.UpdateEmpresa(myEmpresa);
         return new ResponseEntity<Empresa>(updated, new HttpHeaders(), HttpStatus.OK);
     }
     

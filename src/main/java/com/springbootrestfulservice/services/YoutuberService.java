@@ -62,7 +62,7 @@ public class YoutuberService {
                 newEntity.setNombre(entity.getNombre());
                 newEntity.setFechaAlta(entity.getFechaAlta());
                 newEntity.setVideos(entity.getVideos());
-
+                newEntity.setEmpresa(entity.getEmpresa());
                 newEntity = repository.save(newEntity);
 
                 return newEntity;

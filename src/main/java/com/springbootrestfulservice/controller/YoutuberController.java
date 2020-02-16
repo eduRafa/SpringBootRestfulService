@@ -61,7 +61,7 @@ public class YoutuberController {
 
     @PutMapping
     public ResponseEntity<Youtuber> UpdateYoutuber(@Valid @RequestBody Youtuber myYoutuber) throws RecordNotFoundException {
-        Youtuber updated = service.createYoutuber(myYoutuber);
+        Youtuber updated = service.UpdateYoutuber(myYoutuber);
         return new ResponseEntity<Youtuber>(updated, new HttpHeaders(), HttpStatus.OK);
     }
  

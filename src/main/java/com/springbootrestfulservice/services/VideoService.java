@@ -67,7 +67,8 @@ public class VideoService {
                 newEntity.setVisualizaciones(entity.getVisualizaciones());
                 newEntity.setLikes(entity.getLikes());
                 newEntity.setDislikes(entity.getDislikes());
-
+                newEntity.setYoutuber(entity.getYoutuber());
+                newEntity.setCategoria(entity.getCategoria());
                 newEntity = repository.save(newEntity);
 
                 return newEntity;

@@ -40,7 +40,7 @@ public class CategoriaController {
         return new ResponseEntity<List<Categoria>>(categorias, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @GetMapping(path="/{id}", produces = "application/json")
+    @GetMapping(path = "/{id}", produces = "application/json")
     public ResponseEntity<Categoria> getCategoriaById(@PathVariable("id") Long id)
             throws RecordNotFoundException {
         Categoria entity = service.getCategoriaById(id);
@@ -52,18 +52,18 @@ public class CategoriaController {
         Categoria created = service.createCategoria(miCategoria);
         return new ResponseEntity<Categoria>(created, new HttpHeaders(), HttpStatus.OK);
     }
-    
-        @GetMapping("/search/{title}")
+
+    @GetMapping("/search/{title}")
     public ResponseEntity<List<Categoria>> getCategoriaByName(@PathVariable("title") String title) {
-    	List<Categoria> list = service.getItemsByTitle(title);
- 
+        List<Categoria> list = service.getItemsByTitle(title);
+
         return new ResponseEntity<List<Categoria>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<Categoria> UpdateCategoria(@Valid @RequestBody Categoria miCategoria)
             throws RecordNotFoundException {
-        Categoria updated = service.createCategoria(miCategoria);
+        Categoria updated = service.UpdateCategoria(miCategoria);
         return new ResponseEntity<Categoria>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
